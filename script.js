@@ -8,36 +8,37 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-
-function match(playerSelection, computerSelection) {
-    if (playerSelection === "rock") {
+// return 0 for draw, 1 for loss, 2 for win
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        return 0;
+    } else if (playerSeleciton === "rock") {
         if (computerSelection === "paper") {
-            return "You Lose! Paper beats Rock";
-        } else if (computerSelection === "scissors") {
-            return "You Won! Rock beats Scissors";
+            return 1;
         } else {
-            return "Draw! Rock draws with Rock";
+            return 2;
         }
-    } else if (playerSelection === "paper") {
-        if (computerSelection === "rock") {
-            return "You Won! Paper beats Rock";
-        } else if (computerSelection === "scissors") {
-            return "You Lose! Scissors beat Paper";
+    } else if (playerSelecction === "paper") {
+        if (computerSelection === "scissors") {
+            return 1;
         } else {
-            return "Draw! Paper draws with Paper";
+            return 2;
         }
-    } else {
+    } else if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
-            return "You Lose! Rock beats Scissors";
-        } else if (computerSelection === "paper") {
-            return "You Won! Scissors beat Paper";
+            return 1;
         } else {
-            return "Draw! Scissors draw with Scissors";
+            return 2;
         }
     }
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = prompt("Do you want to play Rock, Paper or Scissors? ").toLowerCase();
 
-console.log(match(playerSelection, computerSelection));
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Do you choose Rock, Paper or Scissors? ").toLowerCase();
+        let computerSelection = getComputerChoice();
+
+        console.log(playRound(playerSelection, computerSelection))
+    }
+}
