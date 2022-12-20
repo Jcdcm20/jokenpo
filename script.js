@@ -32,8 +32,7 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
-
-
+/*
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -67,5 +66,15 @@ function game() {
         console.log("You Lost!");
     }
 }
+*/
+const computerSelection = getComputerChoice();
+const buttons = [...document.getElementsByTagName('button')];
+const resultDisplay = document.getElementsByTagName('div')
+const para = document.getElementsByTagName('p');
 
-game();
+buttons.forEach( button => button.addEventListener('click', () => {
+    const playerSelection = button.innerText.toLowerCase();
+    let result = playRound(playerSelection, computerSelection);
+
+    para.innerHTML = 'result';
+}))
