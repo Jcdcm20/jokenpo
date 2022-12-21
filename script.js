@@ -68,6 +68,11 @@ function game() {
 }
 */
 const buttons = document.querySelectorAll('button');
+const div = document.querySelector('div');
+const para = document.createElement('p');
+const score = document.createElement('p');
+const result = document.createElement('p');
+
 buttons.forEach(button => button.addEventListener('click', () => {
     const playerSelection = button.innerText.toLowerCase();
     const computerSelection = getComputerChoice();
@@ -78,15 +83,29 @@ buttons.forEach(button => button.addEventListener('click', () => {
 function getResult(playerSelection, computerSelection, round) {
     let playerScore = 0;
     let computerScore = 0;
-
+    
     switch (round) {
         case 0:
-            console.log('Draw');
+            para.innerText = 'Draw';
             break;
         case 1:
-            console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+            para.innerText = `You Win! ${playerSelection} beats ${computerSelection}`;
+            playerScore++;
             break;
         case 2:
-            console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+            para.innerText = `You Lose! ${computerSelection} beats ${playerSelection}`;
+            computerScore++;
+    }
+    score.innerText = `Player: ${playerScore}     Computer: ${computerScore}`;
+    div.appendChild(para);
+    div.appendChild(score);
+
+
+    if (playerScore == 5) {
+        result.innerText = 'Congratulations!!! You won the game!';
+        div.appendChild(result);
+    } else if (computerScore == 5) {
+        result.innerText = 'Oh No! You Lost the game';
+        div.appendChild(result);
     }
 }
