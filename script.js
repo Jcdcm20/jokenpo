@@ -67,14 +67,26 @@ function game() {
     }
 }
 */
-const computerSelection = getComputerChoice();
-const buttons = [...document.getElementsByTagName('button')];
-const resultDisplay = document.getElementsByTagName('div')
-const para = document.getElementsByTagName('p');
-
-buttons.forEach( button => button.addEventListener('click', () => {
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', () => {
     const playerSelection = button.innerText.toLowerCase();
-    let result = playRound(playerSelection, computerSelection);
-
-    para.innerHTML = 'result';
+    const computerSelection = getComputerChoice();
+    const round = playRound(playerSelection, computerSelection)
+    getResult(playerSelection, computerSelection, round);
 }))
+
+function getResult(playerSelection, computerSelection, round) {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    switch (round) {
+        case 0:
+            console.log('Draw');
+            break;
+        case 1:
+            console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+            break;
+        case 2:
+            console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+    }
+}
