@@ -72,6 +72,8 @@ const div = document.querySelector('div');
 const para = document.createElement('p');
 const score = document.createElement('p');
 const result = document.createElement('p');
+let playerScore = 0;
+let computerScore = 0;
 
 buttons.forEach(button => button.addEventListener('click', () => {
     const playerSelection = button.innerText.toLowerCase();
@@ -81,9 +83,7 @@ buttons.forEach(button => button.addEventListener('click', () => {
 }))
 
 function getResult(playerSelection, computerSelection, round) {
-    let playerScore = 0;
-    let computerScore = 0;
-    
+    result.innerText = '';
     switch (round) {
         case 0:
             para.innerText = 'Draw';
@@ -104,8 +104,12 @@ function getResult(playerSelection, computerSelection, round) {
     if (playerScore == 5) {
         result.innerText = 'Congratulations!!! You won the game!';
         div.appendChild(result);
+        playerScore = 0;
+        computerScore = 0;
     } else if (computerScore == 5) {
         result.innerText = 'Oh No! You Lost the game';
         div.appendChild(result);
+        playerScore = 0;
+        computerScore = 0;
     }
 }
