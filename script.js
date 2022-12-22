@@ -32,41 +32,7 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
-/*
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Do you choose Rock, Paper or Scissors? ").toLowerCase();
-        let computerSelection = getComputerChoice();
 
-        let round = playRound(playerSelection, computerSelection)
-
-        switch (round) {
-            case 0:
-                console.log("Draw");
-                i--;
-                break;
-            case 1:
-                console.log(`You Win! ${playerSelection} beats ${computerSelection}.`);
-                playerScore++;
-                break;
-            case 2:
-                console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-                computerScore++;
-                break;
-        }
-    }
-    console.log(`Player: ${playerScore}`);
-    console.log(`Computer: ${computerScore}`);
-
-    if (playerScore > computerScore) {
-        console.log("CONGRATULATIONS! YOU WON!");
-    } else {
-        console.log("You Lost!");
-    }
-}
-*/
 const buttons = document.querySelectorAll('button');
 const div = document.querySelector('div');
 const para = document.createElement('p');
